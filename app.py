@@ -5,9 +5,9 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 
 #array of zipcodes entered through reports
-zipcodes = []
-#array of objects reported lost
-objects = []
+zipcodes = {}
+#dict of objects reported lost
+objects = {}
 
 @app.route('/', methods=['GET','POST'])
 def options():
@@ -59,9 +59,9 @@ def search_results(search):
         return redirect(url_for("<some_obj>"))
 
 #loads the page for a specific object once clicked on
-@app.route('/<some_obj>', methods=['GET','POST'])
-def some_obj_page(some_obj):
-    return render_template('index.html')
+@app.route('/objects/<id>', methods=['GET','POST'])
+def objects_page(id):
+    return render_template('object.html', obj=objects[id])
 
 app.debug = True
 

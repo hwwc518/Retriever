@@ -113,9 +113,9 @@ footer{
 	font-size: 35px;
 }
 
-#props{
+#prop1, #prop2, #prop3, #prop4{
 	font-family: 'Quicksand';
 	text-align: center;
-	margin-top: 2em;
+	margin-top: 3em;
 }
 

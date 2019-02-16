@@ -36,7 +36,7 @@ def search():
         res = []
         appended_ids = []
         if zipcode not in zipcodes:
-            return render_template('listing.html', results="No results found!")
+            return render_template('listing.html', results=[])
         for obj in zipcodes[zipcode]:
             if obj.name.find(name) != -1:
                 res.append(obj)
@@ -47,7 +47,7 @@ def search():
                 if obj.name.find(keyword) != -1 and obj.id not in appended_ids:
                     res.append(obj)
         if not res: #search has no results
-            return render_template('listing.html', results="No results found!")
+            return render_template('listing.html', results=[])
         else: # display results
             return render_template('listing.html', results=res)
 

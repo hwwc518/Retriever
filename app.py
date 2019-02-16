@@ -11,14 +11,14 @@ objects = []
 
 @app.route('/', methods=['GET','POST'])
 def options():
-        return render_template('/templates/index.html',)
+        return render_template('index.html',)
 
 #route for clicking on the search button
 @app.route('/search', methods=['GET','POST'])
 def search():
     search = objSearchForm(request.form) #search form
     if request.method =='GET':
-        return render_template('/templates/search.html',)
+        return render_template('search.html',)
 
     if request.method =='POST': #If user clicks "search", return the results
         return search_results(search)
@@ -27,7 +27,7 @@ def search():
 @app.route('/report', methods=['GET','POST'])
 def report():
     if request.method =='GET':
-        return render_template('/templates/report.html',)
+        return render_template('report.html',)
 
     if request.method =='POST': #values that are inputted into the form
         result = request.form['repobj', 'zipcoderpt','description','email']
@@ -46,14 +46,14 @@ def search_results(search):
 
     if search.data['search'] == '': #if no input
         flash('No results found!')
-        return redirect(url_for("/templates/search.html"))
+        return redirect(url_for("search.html"))
 
     if not results:
         flash('No results found!') #if no results found
-        return redirect(url_for("/templates/search.html"))
+        return redirect(url_for("search.html"))
 
     else: # display results
-        return render_template('/templates/results.html', results=results)
+        return render_template('results.html', results=results)
 
     if request.method =='POST': #user clicks on an item
         return redirect(url_for("/templates/<some_obj>"))
@@ -61,7 +61,7 @@ def search_results(search):
 #loads the page for a specific object once clicked on
 @app.route('/<some_obj>', methods=['GET','POST'])
 def some_obj_page(some_obj):
-    return render_template('/templates/index.html')
+    return render_template('index.html')
 
 app.debug = True
 

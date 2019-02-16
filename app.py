@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
-from flask_socketio import SocketIO, emit
+from forms import objSearchForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
@@ -7,10 +7,18 @@ socketio = SocketIO(app)
 
 #HTML template for report posts
 HTML_TEMPLATE=Template("""
-<h1>{obj_name}</h1>
-<p>{desc}<p>
-<p>Contact: {em}<p>
+{% for key, value in result.items() %}
+    <tr>
+       <th> {{ key }} </th>
+       <td> {{ value }} </td>
+    </tr>
+{% endfor %}
 """)
+
+#array of zipcodes entered through reports
+zipcodes = []
+#array of objects reported lost
+objects = []
 
 @app.route('/', methods=['GET','POST'])
 def login():
@@ -24,16 +32,12 @@ def options():
 #route for clicking on the search button
 @app.route('/search', methods=['GET','POST'])
 def search()
+    search = objSearchForm(request.form) #search form
     if request.method =='GET':
         return render_template('search.html',)
 
-    if request.method =='POST': #values that the user puts in to find their object
-        zipcode = request.values["zipcode"]
-        findobj = request.values["findobj"]
-        if zipcode not in zipcodes:
-            flash("Sorry, nothing reported in this zipcode!")
-            return render_template("search.html")
-        return redirect(url_for("objlist"))
+    if request.method =='POST': #If user clicks "search", return the results
+        return search_results(search)
 
 #route for clicking on the report button
 @app.route('/report', methods=['GET','POST'])
@@ -42,40 +46,38 @@ def report();
         return render_template('report.html',)
 
     if request.method =='POST': #values that are inputted into the form
-        repobj = request.values["repobj"]
-        description = request.values["description"]
-        email = request.values["email"]
-        zipcoderpt = request.values["zipcoderpt"]
+        result = request.form['repobj', 'zipcoderpt','description','email']
         if repobj is None or description is None or email is None
             flash("Please fill out all fields!")
+        zipcodes.append(zipcoderpt)
+        objects.append(repobj)
         flash("Posted!")
-        return redirect(url_for("options"))
+        return render_template("<some_obj>", result=result)
 
 #object list that is generated once the user inputs search parameters
-@app.route('/objlist', methods=['GET','POST'])
-def objlist(zipcode);
-    if request.method =='GET': #generates list
-        return render_template('list.html', content = zipcode)
+@app.route('/results', methods=['GET','POST'])
+def search_results(search);
+    results = []
+    search_string = search.data['search']
+
+    if search.data['search'] == '': #if no input
+        flash('No results found!')
+        return redirect(url_for("search.html"))
+
+    if not results:
+        flash('No results found!') #if no results found
+        return redirect(url_for("search.html"))
+
+    else: # display results
+        return render_template('results.html', results=results)
 
     if request.method =='POST': #user clicks on an item
         return redirect(url_for("<some_obj>"))
 
 #loads the page for a specific object once clicked on
 @app.route('/<some_obj>', methods=['GET','POST'])
-def some_obj_page(some_obj, obj_desc, obj_email);
-    return HTML_TEMPLATE.substitute(obj_name=some_obj, desc=obj_desc, em=obj_email);
-
-#array of zipcodes entered through reports
-zipcodes = []
-#array of objects reported lost
-objects = []
-
-
-@socketio.on('new_report') #append zipcode and object to array when a new report is created
-def send(datazip, dataobj):
-    zipcodes.append(datazip)
-    objects.append(dataobj)
-
+def some_obj_page(some_obj);
+    return HTML_TEMPLATE.substitute();
 
 app.debug = True
 

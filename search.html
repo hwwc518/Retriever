@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Search </title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/form_style.css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link rel="stylesheet" type="text/javascript" href="js/script.js">
+</head>
+<body>
+	<div class="top">
+		<h1 class="header"> R E T R I E V E R </h1>
+		<h3 class="slogan"> Restoring your valuables one item at a time. </h3>
+	</div>
+
+	<div>
+		<h2 id="search_header"> Search for a Lost Item </h2>
+	</div>
+
+	<form action="/handling_search_form" method="post">
+		
+		<div>
+		    <label for="name">Name:</label>
+		    <input type="text" id="name" name="user_name">
+		</div>
+
+		<div>
+		    <label for="mail">Lost Item:</label>
+		    <input type="email" id="mail" name="user_mail">
+		</div>
+
+		<div>
+		    <label for="msg">Description:</label>
+		    <textarea id="msg" name="user_message"></textarea>
+		</div>
+
+		<div class="button">
+			<button type="submit">Find your item!</button>
+		</div>
+				
+	</form>
+
+</body>
+</html>

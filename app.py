@@ -41,17 +41,19 @@ def report():
 
     if request.method =='POST': #values that are inputted into the form
         global global_counter
-        email = request.form.get('email')
+        email = request.form.get('user_email')
         name = request.form.get('item_found')
         zipcode = request.form.get('zip_found')
-        desc = request.form.get('description')
+        desc = request.form.get('item_description')
+        print(email)
+        print(desc)
         new_obj = Object(global_counter, email, name, zipcode, desc)
-        objects[new_obj.id] = new_obj
+        objects[str(new_obj.id)] = new_obj
         if new_obj.zip not in zipcodes:
             zipcodes[new_obj.zip] = []
         zipcodes[new_obj.zip].append(new_obj)
         global_counter += 1
-        return redirect(url_for("/objects/" + str(new_obj.id)))
+        return redirect("/objects/" + str(new_obj.id))
 
 
 #object list that is generated once the user inputs search parameters

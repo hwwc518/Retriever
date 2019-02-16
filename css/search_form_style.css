@@ -11,7 +11,7 @@ form div + div {
 label {
   /* To make sure that all labels have the same size and are properly aligned */
   display: inline-block;
-  width: 110px;
+  width: 200px;
   text-align: right;
   font-family: 'Quicksand';
   font-size: 24px;
@@ -62,5 +62,4 @@ button {
   font-family: 'Quicksand';
   padding: 1.5%;
   text-align: center;
- /* border-radius: 1em;*/
 }

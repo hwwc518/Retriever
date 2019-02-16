@@ -31,8 +31,8 @@ def search():
         return render_template('search.html',)
 
     if request.method =='POST': #If user clicks "search", return the results
-        name = request.form.get('item_found')
-        zipcode = request.form.get('zip_found')
+        name = request.form.get('item_lost')
+        zipcode = request.form.get('item_lost_zip')
         res = []
         appended_ids = []
         for obj in zipcodes[zipcode]:
@@ -41,7 +41,7 @@ def search():
                 appended_ids.append(obj.id)
         parsed = name.split(" ")
         for keyword in parsed:
-            for obj in zipcods[zipcode]:
+            for obj in zipcodes[zipcode]:
                 if obj.name.find(keyword) != -1 and obj.id not in appended_ids:
                     res.append(obj)
         if not res: #search has no results
@@ -66,6 +66,7 @@ def report():
         if new_obj.zip not in zipcodes:
             zipcodes[new_obj.zip] = []
         zipcodes[new_obj.zip].append(new_obj)
+        print(new_obj.zip)
         global_counter += 1
         return redirect("/objects/" + str(new_obj.id))
 

@@ -3,7 +3,7 @@
 <head>
 	<title> Report </title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/form_style.css">
+	<link rel="stylesheet" type="text/css" href="css/report_form_style.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" type="text/javascript" href="js/script.js">
 </head>
@@ -18,28 +18,34 @@
 		<h2 id="report_header"> Report a Found Item </h2>
 	</div>
 
-	<form action="/results.html" method="post">
+	<form action="/report_results.html" method="post">
 		
 		<div>
-		    <label for="name">Name:</label>
+		    <label>Name:</label>
 		    <input type="text" id="name" name="user_name">
 		</div>
 
 		<div>
-		    <label for="mail">Lost Item:</label>
-		    <input type="email" id="mail" name="user_mail">
+		    <label>Item Found:</label>
+		    <input type="item" id="found" name="item_found">
 		</div>
 
 		<div>
-		    <label for="msg">Description:</label>
-		    <textarea id="msg" name="user_message"></textarea>
+		    <label>Description:</label>
+		    <textarea id="description" name="item_description"></textarea>
 		</div>
 
 		<div class="button">
-			<button type="submit">Find your item!</button>
+			<button type="submit">Report item!</button>
 		</div>
 				
 	</form>
+
+	<div class="foot">
+		<footer>
+			© 2019 Retriever for HackNY
+		</footer>
+	</div>
 
 </body>
 </html>

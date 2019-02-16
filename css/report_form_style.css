@@ -1,0 +1,71 @@
+form {
+  text-align: center;
+  width: 100%;
+  padding: 1em;
+}
+
+form div + div {
+  margin-top: 1em;
+}
+
+label {
+  /* To make sure that all labels have the same size and are properly aligned */
+  display: inline-block;
+  width: 130px;
+  text-align: right;
+  font-family: 'Quicksand';
+  font-size: 24px;
+}
+
+input, textarea {
+  /* To make sure that all text fields have the same font settings
+     By default, textareas have a monospace font */
+  font: 1em sans-serif;
+  font-family: 'Quicksand';
+  margin-left: 1em;
+  padding-left: 1em;
+
+  /* To give the same size to all text fields */
+  width: 400px;
+  box-sizing: border-box;
+
+  /* To harmonize the look & feel of text field border */
+  border: 1px solid #999;
+}
+
+textarea{
+  padding-top: .75em;
+  height: 3em;
+}
+
+#name, #found, #description{
+  /*border-radius: 50px;*/
+  height: 3em;
+}
+
+input:focus, textarea:focus {
+  /* To give a little highlight on active elements */
+  border-color: #000;
+  margin-left: 1em;
+}
+
+textarea {
+  /* To properly align multiline text fields with their labels */
+  vertical-align: top;
+
+  /* To give enough room to type some text */
+  height: 5em;
+}
+
+.button {
+  /* To position the buttons to the same position of the text fields */
+/*  padding-left: 90px;*/ /* same size as the label elements */
+}
+
+button {
+  margin: 1%;
+  font-family: 'Quicksand';
+  padding: 1.5%;
+  text-align: center;
+ /* border-radius: 1em;*/
+}

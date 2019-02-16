@@ -16,6 +16,8 @@
 	background-color: #f4dc42;
 	padding: 5px;
 	position: relative;
+	margin: -10px;
+	margin-right: 10px;
 }
 
 body{
@@ -64,6 +66,8 @@ a{
 	padding-bottom: 1%; 
 	position: fixed;
 	bottom: 0;
+	margin: -10px;
+	margin-right: 10px;
 }
 
 footer{
@@ -93,10 +97,19 @@ footer{
 	color: #a3621d;
 }
 
-#report_header, #search_header{
+#search_header{
 	text-align: center;
 	font-family: 'Quicksand';
-	margin-top: 3%;
+	margin-top: 5%;
 	font-weight: bold;
 	font-size: 35px;
 }
+
+#report_header{
+	text-align: center;
+	font-family: 'Quicksand';
+	margin-top: 4%;
+	font-weight: bold;
+	font-size: 35px;
+}
+

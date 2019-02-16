@@ -1,5 +1,5 @@
 #forms.py
-from Flask import flask
+from flask import Flask
 from wtforms import Form, StringField, SelectField
 
 class objSearchForm(Form):

@@ -3,7 +3,6 @@ from forms import objSearchForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app)
 
 #HTML template for report posts
 HTML_TEMPLATE=Template("""
@@ -20,18 +19,13 @@ zipcodes = []
 #array of objects reported lost
 objects = []
 
-@app.route('/', methods=['GET','POST'])
-def login():
-#google login
-
-#main page with report and search options
 @app.route('/options', methods=['GET','POST'])
 def options():
         return render_template('options.html',)
 
 #route for clicking on the search button
 @app.route('/search', methods=['GET','POST'])
-def search()
+def search():
     search = objSearchForm(request.form) #search form
     if request.method =='GET':
         return render_template('search.html',)
@@ -41,13 +35,13 @@ def search()
 
 #route for clicking on the report button
 @app.route('/report', methods=['GET','POST'])
-def report();
+def report():
     if request.method =='GET':
         return render_template('report.html',)
 
     if request.method =='POST': #values that are inputted into the form
         result = request.form['repobj', 'zipcoderpt','description','email']
-        if repobj is None or description is None or email is None
+        if repobj is None or description is None or email is None:
             flash("Please fill out all fields!")
         zipcodes.append(zipcoderpt)
         objects.append(repobj)
@@ -56,7 +50,7 @@ def report();
 
 #object list that is generated once the user inputs search parameters
 @app.route('/results', methods=['GET','POST'])
-def search_results(search);
+def search_results(search):
     results = []
     search_string = search.data['search']
 
@@ -76,7 +70,7 @@ def search_results(search);
 
 #loads the page for a specific object once clicked on
 @app.route('/<some_obj>', methods=['GET','POST'])
-def some_obj_page(some_obj);
+def some_obj_page(some_obj):
     return HTML_TEMPLATE.substitute();
 
 app.debug = True

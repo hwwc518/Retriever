@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Search Listing </title>
+	<title> Search Results </title>
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link rel="stylesheet" type="text/javascript" href="../static/js/script.js">
 </head>
 <body>
+
+	<div class="top">
+		<a class='default-link' href='../../'>
+			<h1 class="header"> R E T R I E V E R </h1>
+			<h3 class="slogan"> Restoring your valuables one item at a time. </h3>
+		</a>
+	</div>
+
+	{% for obj in results %}
+
+		<div id="forloop"> <a href="/objects/{{obj.id}}">
+				Name: {{obj.name}} <br><br>
+				Description: {{obj.desc}}
+		</div></a>
+
+	{% endfor %}
+
+	<div class="foot">
+		<footer>
+			© 2019 Retriever for HackNY
+		</footer>
+	</div>
 
 </body>
 </html>

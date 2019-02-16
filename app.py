@@ -35,6 +35,8 @@ def search():
         zipcode = request.form.get('item_lost_zip')
         res = []
         appended_ids = []
+        if zipcode not in zipcodes:
+            return render_template('listing.html', results="No results found!")
         for obj in zipcodes[zipcode]:
             if obj.name.find(name) != -1:
                 res.append(obj)

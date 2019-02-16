@@ -8,6 +8,16 @@ app.config['SECRET_KEY'] = 'secret!'
 zipcodes = {}
 #dict of objects reported lost
 objects = {}
+#global counter
+global_counter = 1;
+#object class
+class Object:
+    def __init__(self, id, email, name, zip, desc):
+        self.id = id
+        self.name = name
+        self.zip = zip
+        self.desc = desc
+        self.email = email
 
 @app.route('/', methods=['GET','POST'])
 def options():
@@ -30,13 +40,19 @@ def report():
         return render_template('report.html',)
 
     if request.method =='POST': #values that are inputted into the form
-        result = request.form['repobj', 'zipcoderpt','description','email']
-        if repobj is None or description is None or email is None:
-            flash("Please fill out all fields!")
-        zipcodes.append(zipcoderpt)
-        objects.append(repobj)
-        flash("Posted!")
-        return render_template("<some_obj>", result=result)
+        global global_counter
+        email = request.form.get('email')
+        name = request.form.get('item_found')
+        zipcode = request.form.get('zip_found')
+        desc = request.form.get('description')
+        new_obj = Object(global_counter, email, name, zipcode, desc)
+        objects[new_obj.id] = new_obj
+        if new_obj.zip not in zipcodes:
+            zipcodes[new_obj.zip] = []
+        zipcodes[new_obj.zip].append(new_obj)
+        global_counter += 1
+        return redirect(url_for("/objects/" + str(new_obj.id)))
+
 
 #object list that is generated once the user inputs search parameters
 @app.route('/results', methods=['GET','POST'])

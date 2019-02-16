@@ -31,7 +31,23 @@ def search():
         return render_template('search.html',)
 
     if request.method =='POST': #If user clicks "search", return the results
-        return search_results(search)
+        name = request.form.get('item_found')
+        zipcode = request.form.get('zip_found')
+        res = []
+        appended_ids = []
+        for obj in zipcodes[zipcode]:
+            if obj.name.find(name) != -1:
+                res.append(obj)
+                appended_ids.append(obj.id)
+        parsed = name.split(" ")
+        for keyword in parsed:
+            for obj in zipcods[zipcode]:
+                if obj.name.find(keyword) != -1 and obj.id not in appended_ids:
+                    res.append(obj)
+        if not res: #search has no results
+            return render_template('listing.html', results="No results found!")
+        else: # display results
+            return render_template('listing.html', results=res)
 
 #route for clicking on the report button
 @app.route('/report', methods=['GET','POST'])
@@ -45,8 +61,6 @@ def report():
         name = request.form.get('item_found')
         zipcode = request.form.get('zip_found')
         desc = request.form.get('item_description')
-        print(email)
-        print(desc)
         new_obj = Object(global_counter, email, name, zipcode, desc)
         objects[str(new_obj.id)] = new_obj
         if new_obj.zip not in zipcodes:
@@ -54,27 +68,6 @@ def report():
         zipcodes[new_obj.zip].append(new_obj)
         global_counter += 1
         return redirect("/objects/" + str(new_obj.id))
-
-
-#object list that is generated once the user inputs search parameters
-@app.route('/results', methods=['GET','POST'])
-def search_results(search):
-    results = []
-    search_string = search.data['search']
-
-    if search.data['search'] == '': #if no input
-        flash('No results found!')
-        return redirect(url_for("search.html"))
-
-    if not results:
-        flash('No results found!') #if no results found
-        return redirect(url_for("search.html"))
-
-    else: # display results
-        return render_template('results.html', results=results)
-
-    if request.method =='POST': #user clicks on an item
-        return redirect(url_for("<some_obj>"))
 
 #loads the page for a specific object once clicked on
 @app.route('/objects/<id>', methods=['GET','POST'])

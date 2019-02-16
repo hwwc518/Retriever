@@ -4,24 +4,14 @@ from forms import objSearchForm
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 
-#HTML template for report posts
-HTML_TEMPLATE=Template("""
-{% for key, value in result.items() %}
-    <tr>
-       <th> {{ key }} </th>
-       <td> {{ value }} </td>
-    </tr>
-{% endfor %}
-""")
-
 #array of zipcodes entered through reports
 zipcodes = []
 #array of objects reported lost
 objects = []
 
-@app.route('/options', methods=['GET','POST'])
+@app.route('/', methods=['GET','POST'])
 def options():
-        return render_template('options.html',)
+        return render_template('index.html',)
 
 #route for clicking on the search button
 @app.route('/search', methods=['GET','POST'])
@@ -71,9 +61,9 @@ def search_results(search):
 #loads the page for a specific object once clicked on
 @app.route('/<some_obj>', methods=['GET','POST'])
 def some_obj_page(some_obj):
-    return HTML_TEMPLATE.substitute();
+    return render_template('index.html')
 
 app.debug = True
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0')
+    app.run()

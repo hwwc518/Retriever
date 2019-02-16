@@ -55,7 +55,7 @@ a{
 	border: solid;
 }
 
-#foot{
+.foot{
 	text-align: right;
 	font-family: 'Quicksand', sans-serif;
 	background-color: #e8de9d;

@@ -11,9 +11,10 @@ form div + div {
 label {
   /* To make sure that all labels have the same size and are properly aligned */
   display: inline-block;
-  width: 90px;
+  width: 110px;
   text-align: right;
   font-family: 'Quicksand';
+  font-size: 24px;
 }
 
 input, textarea {
@@ -21,24 +22,27 @@ input, textarea {
      By default, textareas have a monospace font */
   font: 1em sans-serif;
   font-family: 'Quicksand';
+  margin-left: 1em;
+  padding-left: 1em;
 
   /* To give the same size to all text fields */
   width: 400px;
   box-sizing: border-box;
-  border-radius: 3em;
+  /*border-radius: 3em;*/
 
   /* To harmonize the look & feel of text field border */
   border: 1px solid #999;
 }
 
 #item, #zip{
-  border-radius: 50px;
+  /*border-radius: 50px;*/
   height: 3em;
 }
 
 input:focus, textarea:focus {
   /* To give a little highlight on active elements */
   border-color: #000;
+  margin-left: 1em;
 }
 
 textarea {

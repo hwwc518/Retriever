@@ -68,21 +68,21 @@ button {
   text-align: center;
 }
 
-#report_submit{
+#final_report{
   font-family: 'Quicksand', sans-serif;
-  font-weight: bold;
   width: 8%;
   background-color: rgb(255, 255, 255, .5);
   border-radius: 50px; 
   text-align: center;
   padding: 1%;
   margin: 3%;
-  margin-left: -.5em;
+  margin-left: -2em;
   font-size: 16px;
   display: inline-block;
+  text-decoration: none;
 }
 
-#report_submit:hover{
+#final_report:hover{
   background-color: rgb(242, 236, 213, .75);
   border: solid 1pt;
 }

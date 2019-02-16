@@ -3,7 +3,7 @@
 <head>
 	<title> Search </title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/form_style.css">
+	<link rel="stylesheet" type="text/css" href="css/search_form_style.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" type="text/javascript" href="js/script.js">
 </head>
@@ -17,21 +17,16 @@
 		<h2 id="search_header"> Search for a Lost Item </h2>
 	</div>
 
-	<form action="/handling_search_form" method="post">
-		
+	<form action="/results.html" method="post">
+
 		<div>
-		    <label for="name">Name:</label>
-		    <input type="text" id="name" name="user_name">
+		    <label for="item">Lost Item:</label>
+		    <input type="item" id="item" name="item_lost">
 		</div>
 
 		<div>
-		    <label for="mail">Lost Item:</label>
-		    <input type="email" id="mail" name="user_mail">
-		</div>
-
-		<div>
-		    <label for="msg">Description:</label>
-		    <textarea id="msg" name="user_message"></textarea>
+		    <label for="zip"> Zip Code:</label>
+		    <input type="zip" id="zip" name="item_lost_zip">
 		</div>
 
 		<div class="button">

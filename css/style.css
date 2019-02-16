@@ -93,11 +93,10 @@ footer{
 	color: #a3621d;
 }
 
-#search_header{
-	text-align: left;
+#report_header, #search_header{
+	text-align: center;
 	font-family: 'Quicksand';
 	margin-top: 3%;
-	margin-left: 3%;
 	font-weight: bold;
 	font-size: 35px;
 }

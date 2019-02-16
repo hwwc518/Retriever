@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title> Search </title>
-	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/search_form_style.css">
+	<link href="{{ url_for('static', filename='search_form_style.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="css/search_form_style.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-	<link rel="stylesheet" type="text/javascript" href="../static/js/script.js">
+	<link rel="stylesheet" type="text/javascript" href="js/script.js">
 </head>
 <body>
 	<div class="top">
@@ -25,16 +25,12 @@
 		</div>
 
 		<div>
-		    <label> Zip Code:</label>
+		    <label> Zip Code Found:</label>
 		    <input type="zip" id="zip" name="item_lost_zip">
 		</div>
 
 		<div class="button">
-			<div id="search_submit">
-				<a class='default-link' href='javascript:void(1)' onclick='window.location = "/search_results"'>
-					Find Item!
-				</a>
-			</div>
+			<button type="submit">Find your item!</button>
 		</div>
 				
 	</form>

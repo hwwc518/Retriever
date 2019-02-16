@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title> Report </title>
-	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/report_form_style.css">
+	<link href="{{ url_for('static', filename='report_form_style.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="css/report_form_style.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-	<link rel="stylesheet" type="text/javascript" href="../static/js/script.js">
+	<link rel="stylesheet" type="text/javascript" href="js/script.js">
 </head>
 <body>
 
@@ -19,20 +19,15 @@
 	</div>
 
 	<form action="/report_results.html" method="post">
-
+		
 		<div>
-		    <label>Email:</label>
-		    <input type="text" id="email" name="user_email">
+		    <label>Name:</label>
+		    <input type="text" id="name" name="user_name">
 		</div>
 
 		<div>
 		    <label>Item Found:</label>
-		    <input type="item" id="item_found" name="item_found">
-		</div>
-
-		<div>
-		    <label>Zip Code:</label>
-		    <input type="item" id="zip_found" name="zip_found">
+		    <input type="item" id="found" name="item_found">
 		</div>
 
 		<div>
@@ -40,12 +35,10 @@
 		    <textarea id="description" name="item_description"></textarea>
 		</div>
 
-		<div id="report_submit">
-			<a class='default-link' href='javascript:void(1)' onclick='window.location = "/report_results"'>
-				Report Item!
-			</a>
+		<div class="button">
+			<button type="submit">Report item!</button>
 		</div>
-
+				
 	</form>
 
 	<div class="foot">

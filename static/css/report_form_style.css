@@ -11,7 +11,7 @@ form div + div {
 label {
   /* To make sure that all labels have the same size and are properly aligned */
   display: inline-block;
-  width: 130px;
+  width: 160px;
   text-align: right;
   font-family: 'Quicksand';
   font-size: 24px;
@@ -38,7 +38,7 @@ textarea{
   height: 3em;
 }
 
-#name, #found, #description{
+#email, #zip_found, #item_found, #description{
   height: 3em;
 }
 
@@ -66,5 +66,24 @@ button {
   font-family: 'Quicksand';
   padding: 1.5%;
   text-align: center;
- /* border-radius: 1em;*/
 }
+
+#report_submit{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  width: 8%;
+  background-color: rgb(255, 255, 255, .5);
+  border-radius: 50px; 
+  text-align: center;
+  padding: 1%;
+  margin: 3%;
+  margin-left: -.5em;
+  font-size: 16px;
+  display: inline-block;
+}
+
+#report_submit:hover{
+  background-color: rgb(242, 236, 213, .75);
+  border: solid 1pt;
+}
+

@@ -36,7 +36,7 @@ def report():
         zipcodes.append(zipcoderpt)
         objects.append(repobj)
         flash("Posted!")
-        return render_template("/templates/<some_obj>", result=result)
+        return render_template("<some_obj>", result=result)
 
 #object list that is generated once the user inputs search parameters
 @app.route('/results', methods=['GET','POST'])
@@ -56,7 +56,7 @@ def search_results(search):
         return render_template('results.html', results=results)
 
     if request.method =='POST': #user clicks on an item
-        return redirect(url_for("/templates/<some_obj>"))
+        return redirect(url_for("<some_obj>"))
 
 #loads the page for a specific object once clicked on
 @app.route('/<some_obj>', methods=['GET','POST'])

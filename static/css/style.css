@@ -115,9 +115,10 @@ footer{
 }
 
 #forloop{
-	margin-top: 2%;
+	margin: 5% auto;
 	text-align: center;
 	font-family: 'Quicksand';
-	border: solid;
-	padding: 1%;
+	border: solid .5pt;
+	padding: 2%;
+	width: 300px;
 }

@@ -110,12 +110,18 @@ footer{
 
 #props{
 	text-align: left;
-	margin-left: 30%;
+	margin-left: 40%;
+}
+
+#info{
+	font-family: 'Quicksand';
+	text-align: center;
+	margin-top:2em;
 }
 
 #prop1, #prop2, #prop3, #prop4{
 	font-family: 'Quicksand';
-	margin-top: 2em;
+	margin-top: 1.5em;
 }
 
 #forloop{

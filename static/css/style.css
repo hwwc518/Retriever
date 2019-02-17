@@ -122,3 +122,8 @@ footer{
 	padding: 2%;
 	width: 300px;
 }
+
+#forloop:hover{
+	color: #a56b18;
+	font-weight: bolder;
+}

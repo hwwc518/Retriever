@@ -117,12 +117,8 @@ footer{
 
 #props{
 	text-align: left;
-	margin-left: 40%;
-}
-
-#info{
-	font-family: 'Quicksand';
-	margin-top:1.5em;
+	margin-left: 35%;
+	width: 600px;
 }
 
 #prop1, #prop2, #prop3, #prop4{

@@ -17,10 +17,12 @@
 
 	{% for obj in results %}
 
-		<div id="forloop"> <a href="/objects/{{obj.id}}">
-				Name: {{obj.name}} <br><br>
-				Description: {{obj.desc}}
-		</div></a>
+		<a href="/objects/{{obj.id}}">
+			<div id="forloop">
+				<b>Name:</b> {{obj.name}} <br><br>
+				<b>Description:</b> {{obj.desc}}
+			</div>
+		</a>
 
 	{% endfor %}
 

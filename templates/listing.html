@@ -15,16 +15,19 @@
 		</a>
 	</div>
 
-	{% for obj in results %}
+		{% for obj in results %}
 
-		<a href="/objects/{{obj.id}}">
-			<div id="forloop">
-				<b>Name:</b> {{obj.name}} <br><br>
-				<b>Description:</b> {{obj.desc}}
-			</div>
-		</a>
+			<a href="/objects/{{obj.id}}">
+				<div id="forloop">
+					<b>Name:</b> {{obj.name}} <br><br>
+					<b>Description:</b> {{obj.desc}}
+				</div>
+			</a>
 
-	{% endfor %}
+		{% else %}
+			<div id="sorry"> There are no items matching your description. <br><br>Check back in a few hours to see if someone's found it! </div>
+
+		{% endfor %}
 
 	<div class="foot">
 		<footer>

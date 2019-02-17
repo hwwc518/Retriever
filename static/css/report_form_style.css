@@ -87,3 +87,16 @@ button {
   border: solid 1pt;
 }
 
+#pic{
+  font: 1em sans-serif;
+  font-family: 'Quicksand';
+  margin-left: 1em;
+  padding-left: 1em;
+  width: 300px;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-align: left;
+  left: 0;
+}
+
+

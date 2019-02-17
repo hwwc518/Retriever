@@ -5,6 +5,14 @@
 	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" type="text/javascript" href="../static/js/script.js">
+	<style>
+		#map {
+			width: 50%;
+			height: 300px;
+			background-color: grey;
+			/* display: inline-block; */
+		}
+	</style>	
 </head>
 <body>
 
@@ -23,10 +31,47 @@
 			<h2 id="prop2"> Zip Code:&nbsp&nbsp {{obj.zip}} </h2>
 			<h2 id="prop3"> Description:&nbsp&nbsp {{obj.desc}} </h2>
 			<h2 id="prop4"> Email:&nbsp&nbsp {{obj.email}} </h2>
+			<div id="map"></div>
 		</div>
 
 	</div>
 
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACdo1jcNdemqdahvcFakSi4QtMBNNY-OI&callback=initMap">
+    </script>
+
+    <script type="text/javascript">
+    
+    function getCoordinates(address){
+      return fetch(address)
+      .then(response => response.json())
+      .then(data => {
+      const latitude = parseFloat(data.results['0'].geometry.location.lat);
+      const longitude = parseFloat(data.results['0'].geometry.location.lng);
+      center = {latitude, longitude};
+      return center;
+      })
+    }
+
+    const zipC = {{obj.zip}};
+    const req = `https://maps.googleapis.com/maps/api/geocode/json?address=${zipC}&key=AIzaSyACdo1jcNdemqdahvcFakSi4QtMBNNY-OI`;
+
+    //var uluru = getCoordinates(req).then(coord => console.log(coord));
+    //console.log(uluru)
+    // Initialize and add the map
+    async function initMap() {
+      // The location of the zip code
+      var uluru = await getCoordinates(req);
+      console.log(typeof(uluru.latitude))
+      // The map, centered at Uluru
+      var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 15, 
+          center: {lat: uluru.latitude, lng: uluru.longitude}});
+      // The marker, positioned at Uluru
+      var marker = new google.maps.Marker({position: {lat: uluru.latitude, lng: uluru.longitude}, map: map});
+    }
+
+	</script>
 
 	<div class="foot">
 		<footer>
